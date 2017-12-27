@@ -11,7 +11,7 @@ var router = Express.Router();
 router.get('/', function(req, res, next) {
   // const rootResponse = responseHelper.successWithData({});
   // rootResponse.renderResponse( res );
-  if(coreConstants.ENVIRONMENT == 'production'){
+  if(coreConstants.ENVIRONMENT == coreConstants.PROD_ENVIRONMENT){
     res.redirect('https://simpletoken.org/');
   } else {
     res.redirect('https://stagingsimpletoken.org');

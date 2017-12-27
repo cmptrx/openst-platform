@@ -18,6 +18,10 @@ function define(name, value) {
 
 define("ENVIRONMENT", process.env.ENVIRONMENT);
 
+define("PROD_ENVIRONMENT", 'production');
+define("STAG_ENVIRONMENT", 'staging');
+define("DEV_ENVIRONMENT", 'development');
+
 define("HTTPS_KEY", process.env.HTTPS_KEY);
 define("HTTPS_CERT", process.env.HTTPS_CERT);
 define("HTTPS_PORT", process.env.HTTPS_PORT);
@@ -68,3 +72,11 @@ if (!path.isAbsolute(txLogsFolder)) {
   txLogsFolder = path.join(__dirname, '/' + rootPrefix + '/' + txLogsFolder);
 }
 define('OST_TRANSACTION_LOGS_FOLDER', txLogsFolder);
+
+var chainInteractHttpAuthCredentials = {
+  'users': {}
+};
+chainInteractHttpAuthCredentials['users'][process.env.OST_CHAIN_INTERACT_URI_USER_NAME] = process.env.OST_CHAIN_INTERACT_URI_USER_PASSPHRASE;
+
+define('OST_CHAIN_INTERACT_URI_HTTP_AUTH_CREDENTIALS', chainInteractHttpAuthCredentials);
+

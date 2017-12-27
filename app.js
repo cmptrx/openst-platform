@@ -17,12 +17,13 @@ const express = require('express')
 ;
 
 //All the requires.
-const rootPrefix    = "."
-  , coreConstants   = require( rootPrefix + '/config/core_constants' )
-  , responseHelper  = require( rootPrefix + '/lib/formatter/response')
-  , indexRoutes     = require( rootPrefix + '/routes/index')
-  , btRoutes        = require( rootPrefix + '/routes/bt')
-  , config          = require( coreConstants.OST_MEMBER_CONFIG_FILE_PATH )
+const rootPrefix        = "."
+  , coreConstants       = require( rootPrefix + '/config/core_constants' )
+  , responseHelper      = require( rootPrefix + '/lib/formatter/response')
+  , indexRoutes         = require( rootPrefix + '/routes/index')
+  , btRoutes            = require( rootPrefix + '/routes/bt')
+  , web3InteractRoutes = require( rootPrefix + '/routes/web3Interact')
+  , config              = require( coreConstants.OST_MEMBER_CONFIG_FILE_PATH )
 ;
 
 console.log( "config file path:", coreConstants.OST_MEMBER_CONFIG_FILE_PATH );
@@ -52,6 +53,14 @@ for (var key in config.Members) {
   console.log("Mounting branded token", member.Name, "on", member.Route);
   app.use(member.Route, basicAuth(member.ApiAuth), new btRoutes(member));
 }
+
+// Mount UC Chain Interact
+console.log("Mounting UC Chain Interact on /uc");
+app.use('/uc', basicAuth(coreConstants.OST_CHAIN_INTERACT_URI_HTTP_AUTH_CREDENTIALS), new web3InteractRoutes('uc'));
+
+// Mount VC Chain Interact
+console.log("Mounting VC Chain Interact on /vc");
+app.use('/vc', basicAuth(coreConstants.OST_CHAIN_INTERACT_URI_HTTP_AUTH_CREDENTIALS), new web3InteractRoutes('vc'));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
