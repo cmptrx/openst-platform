@@ -47,6 +47,7 @@ define('OST_GETH_VALUE_WS_PROVIDER', process.env.OST_GETH_VALUE_WS_PROVIDER);
 
 // Value Chain ID
 define('OST_VALUE_CHAIN_ID', process.env.OST_VALUE_CHAIN_ID);
+define('OST_VALUE_MAIN_NET_CHAIN_ID', 1)
 
 // Utility Chain Geth
 define('OST_GETH_UTILITY_RPC_PROVIDER', process.env.OST_GETH_UTILITY_RPC_PROVIDER);
@@ -54,6 +55,7 @@ define('OST_GETH_UTILITY_WS_PROVIDER', process.env.OST_GETH_UTILITY_WS_PROVIDER)
 
 // Utility Chain ID
 define('OST_UTILITY_CHAIN_ID', process.env.OST_UTILITY_CHAIN_ID);
+define('OST_UTILITY_MAIN_NET_CHAIN_ID', 1411)
 
 // Gas limit on value and utility chains
 define('OST_VALUE_GAS_LIMIT', 4700000);

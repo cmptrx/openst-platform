@@ -157,16 +157,16 @@ module.exports = function( chainCode ) {
 
   };
 
-  const prodEnvOnly = function(req, res, next) {
+  const nonProdEnvOnly = function(req, res, next) {
 
-    if (coreConstants.ENVIRONMENT == coreConstants.PROD_ENVIRONMENT) {
-      next();
-    } else {
+    if (!coreConstants.ENVIRONMENT || (coreConstants.ENVIRONMENT == coreConstants.PROD_ENVIRONMENT)) {
       logger.error(req.path,' is Not Allowed For Prod ENV');
       return _renderResult(
           responseHelper.error('r_wi_5', req.path + ' is Not Allowed For Prod ENV'),
           res
       );
+    } else {
+      next();
     }
 
   };
@@ -180,7 +180,7 @@ module.exports = function( chainCode ) {
   router.get('/get-transaction-receipt', getTransactionReceipt);
 
   // For For VC grants ST & For UC fails now (would eventually grants ST')
-  router.post('/request-funds', prodEnvOnly, requestFundTransfer);
+  router.post('/request-funds', nonProdEnvOnly, requestFundTransfer);
 
   router.post('/call-tx', executeReadTransaction);
 
