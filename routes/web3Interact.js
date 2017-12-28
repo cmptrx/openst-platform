@@ -24,7 +24,9 @@ module.exports = function( chainCode ) {
       , chainInteract = new chainInteractKlass()
       , oThis = this;
 
-  router.get('/get-balance', async function(req, res, next) {
+  //////// Middleware Methods /////////////
+
+  const getBalance = function(req, res, next) {
 
     const address = req.query.address;
 
@@ -40,9 +42,9 @@ module.exports = function( chainCode ) {
           );
         });
 
-  });
+  };
 
-  router.get('/get-nonce', async function(req, res, next) {
+  const getNonce = function(req, res, next) {
 
     const address = req.query.address;
 
@@ -58,9 +60,9 @@ module.exports = function( chainCode ) {
           );
         });
 
-  });
+  };
 
-  router.get('/get-transaction-receipt', async function(req, res, next) {
+  const getTransactionReceipt = function(req, res, next) {
 
     const transactionHash = req.query.transactionHash;
 
@@ -80,47 +82,48 @@ module.exports = function( chainCode ) {
           );
         });
 
-  });
+  };
 
-  // For For VC grants ST & For UC fails now (would eventually grants ST')
-  router.post('/request-funds', async function(req, res, next) {
-
-    Assert.notStrictEqual(coreConstants.ENVIRONMENT, coreConstants.PROD_ENVIRONMENT, `Not For Prod ENV`);
+  const requestFundTransfer = function(req, res, next) {
 
     const amountInSt = req.query.amount
         , receiverAddress = req.query.address;
 
-    const requestFundTransferResponse = await chainInteract.requestFundsTransfer(receiverAddress, amountInSt);
+    chainInteract.requestFundsTransfer(receiverAddress, amountInSt)
+        .then(function(requestResponse) {
+          return _renderResult(requestResponse, res);
+        })
+        .catch(function(reason){
+          logger.error(reason);
+          return _renderResult(
+              responseHelper.error('r_wi_4', "Something Went Wrong"),
+              res
+          );
+        });
 
-    return requestFundTransferResponse.renderResponse( res );
+  };
 
-  });
-
-  router.post('/call-tx', async function(req, res, next) {
+  const executeReadTransaction = function(req, res, next) {
 
     const txParams = req.query.rawTx;
 
-    if (!txParams || Array.isArray(txParams) || txParams.constructor != Object) {
-      return responseHelper.error('r_wi_3', "Invalid format for txParams");
-    }
+    chainInteract.callTransaction(txParams)
+        .then(function(requestResponse) {
+          return _renderResult(requestResponse, res);
+        })
+        .catch(function(reason){
+          logger.error(reason);
+          return _renderResult(
+              responseHelper.error('r_wi_5', "Something Went Wrong"),
+              res
+          );
+        });
 
-    if (!txParams.from || !txParams.to) {
-      return responseHelper.error('r_wi_4', "Mandatory keys missing in txParams");
-    }
+  };
 
-    const callTxResponse = await chainInteract.callTransaction(txParams);
-
-    return callTxResponse.renderResponse( res );
-
-  });
-
-  router.post('/send-tx', async function(req, res, next) {
+  const executeWriteTransaction = function(req, res, next) {
 
     const signedTx = req.query.signedTx;
-
-    if (!signedTx || signedTx.constructor != String) {
-      return responseHelper.error('r_wi_3', "Invalid format for txParams");
-    }
 
     chainInteract.sendSignedTransaction(signedTx)
         .then(function(requestResponse) {
@@ -134,15 +137,11 @@ module.exports = function( chainCode ) {
           );
         });
 
-  });
+  };
 
-  router.post('/estimate-gas-for-tx', async function(req, res, next) {
+  const extimateGasForTransaction = function(req, res, next) {
 
     const signedTx = req.query.signedTx;
-
-    if (!signedTx || signedTx.constructor != String) {
-      return responseHelper.error('r_wi_4', "Invalid format for txParams");
-    }
 
     chainInteract.estimateGasForSignedTransaction(signedTx)
         .then(function(requestResponse) {
@@ -156,13 +155,46 @@ module.exports = function( chainCode ) {
           );
         });
 
-  });
+  };
+
+  const prodEnvOnly = function(req, res, next) {
+
+    if (coreConstants.ENVIRONMENT == coreConstants.PROD_ENVIRONMENT) {
+      next();
+    } else {
+      logger.error(req.path,' is Not Allowed For Prod ENV');
+      return _renderResult(
+          responseHelper.error('r_wi_5', req.path + ' is Not Allowed For Prod ENV'),
+          res
+      );
+    }
+
+  };
+
+  //////////// Expose Routes ///////////////////
+
+  router.get('/get-balance', getBalance);
+
+  router.get('/get-nonce', getNonce);
+
+  router.get('/get-transaction-receipt', getTransactionReceipt);
+
+  // For For VC grants ST & For UC fails now (would eventually grants ST')
+  router.post('/request-funds', prodEnvOnly, requestFundTransfer);
+
+  router.post('/call-tx', executeReadTransaction);
+
+  router.post('/send-tx', executeWriteTransaction);
+
+  router.post('/estimate-gas-for-tx', extimateGasForTransaction);
 
   //// Private Methods /////////
 
   const _renderResult = function(requestResponse, responseObject) {
     return requestResponse.renderResponse(responseObject);
   }
+
+  ///////// Return Route Object /////////////
 
   return router;
 
