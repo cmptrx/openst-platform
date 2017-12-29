@@ -22,7 +22,8 @@ const rootPrefix        = "."
   , responseHelper      = require( rootPrefix + '/lib/formatter/response')
   , indexRoutes         = require( rootPrefix + '/routes/index')
   , btRoutes            = require( rootPrefix + '/routes/bt')
-  , web3InteractRoutes = require( rootPrefix + '/routes/web3Interact')
+  , valueChainInteractRoutes = require( rootPrefix + '/routes/chain_interact/value')
+  , utilityChainInteractRoutes = require( rootPrefix + '/routes/chain_interact/utility')
   , config              = require( coreConstants.OST_MEMBER_CONFIG_FILE_PATH )
 ;
 
@@ -56,11 +57,11 @@ for (var key in config.Members) {
 
 // Mount UC Chain Interact
 console.log("Mounting UC Chain Interact on /uc");
-app.use('/uc', basicAuth(coreConstants.OST_CHAIN_INTERACT_URI_HTTP_AUTH_CREDENTIALS), new web3InteractRoutes('uc'));
+app.use('/uc', basicAuth(coreConstants.OST_CHAIN_INTERACT_URI_HTTP_AUTH_CREDENTIALS), new utilityChainInteractRoutes().router);
 
 // Mount VC Chain Interact
 console.log("Mounting VC Chain Interact on /vc");
-app.use('/vc', basicAuth(coreConstants.OST_CHAIN_INTERACT_URI_HTTP_AUTH_CREDENTIALS), new web3InteractRoutes('vc'));
+app.use('/vc', basicAuth(coreConstants.OST_CHAIN_INTERACT_URI_HTTP_AUTH_CREDENTIALS), new valueChainInteractRoutes().router);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
