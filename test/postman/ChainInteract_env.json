@@ -1,0 +1,34 @@
+{
+  "id": "5d6b1a89-9d51-fb18-1858-f55eb6678bb0",
+  "name": "ChainInteract_env",
+  "values": [
+    {
+      "enabled": true,
+      "key": "uc_route",
+      "value": "http://localhost:3000/uc",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "api_user",
+      "value": "test",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "api_password",
+      "value": "testtest",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "vc_route",
+      "value": "http://localhost:3000/vc",
+      "type": "text"
+    }
+  ],
+  "timestamp": 1514297553160,
+  "_postman_variable_scope": "environment",
+  "_postman_exported_at": "2018-01-02T11:17:36.815Z",
+  "_postman_exported_using": "Postman/5.5.0"
+}

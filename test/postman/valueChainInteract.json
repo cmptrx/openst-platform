@@ -1,0 +1,362 @@
+{
+	"id": "fd048019-67ae-44a5-93b2-046d87e77a46",
+	"name": "valueChainInteract",
+	"description": "",
+	"order": [
+		"2a02172b-203d-0a1d-4899-c8bd37769043",
+		"194bac6f-01ec-0f25-1ca0-8b3d62b15f29",
+		"907ebfa3-b385-9c2f-1cce-74c514374230",
+		"45572cc5-43b1-fccb-a7d3-24fcc1f96521",
+		"30ed335a-fbbd-861b-f082-c6b48b83b6c6"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 1514298198238,
+	"owner": 0,
+	"public": false,
+	"events": [],
+	"variables": [],
+	"auth": null,
+	"requests": [
+		{
+			"id": "194bac6f-01ec-0f25-1ca0-8b3d62b15f29",
+			"headers": "Authorization: Basic YWNtZTphY21lc2VjcmV0\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Basic YWNtZTphY21lc2VjcmV0",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{vc_route}}/get-transaction-receipt?transactionHash=0x7c9ee86d974758111fdb76a1d6d0b77285419ec56fac72a8746f8b0d3c0ae2df",
+			"queryParams": [
+				{
+					"key": "transactionHash",
+					"value": "0x7c9ee86d974758111fdb76a1d6d0b77285419ec56fac72a8746f8b0d3c0ae2df",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"events": [],
+			"auth": {
+				"type": "basic",
+				"basic": [
+					{
+						"key": "username",
+						"value": "{{api_user}}",
+						"type": "string"
+					},
+					{
+						"key": "password",
+						"value": "{{api_password}}",
+						"type": "string"
+					},
+					{
+						"key": "saveHelperData",
+						"value": true,
+						"type": "boolean"
+					},
+					{
+						"key": "showPassword",
+						"value": false,
+						"type": "boolean"
+					}
+				]
+			},
+			"method": "GET",
+			"collectionId": "fd048019-67ae-44a5-93b2-046d87e77a46",
+			"data": [],
+			"dataMode": "raw",
+			"name": "Get Transaction Receipt",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1514298882963,
+			"version": 2,
+			"responses": [],
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{api_user}}",
+				"password": "{{api_password}}",
+				"saveToRequest": true
+			},
+			"rawModeData": ""
+		},
+		{
+			"id": "2a02172b-203d-0a1d-4899-c8bd37769043",
+			"headers": "Authorization: Basic YWNtZTphY21lc2VjcmV0\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Basic YWNtZTphY21lc2VjcmV0",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{vc_route}}/get-nonce?address=0xc931d31b1207baaeb730c5bdbc1be10f59d95e3d",
+			"queryParams": [
+				{
+					"key": "address",
+					"value": "0xc931d31b1207baaeb730c5bdbc1be10f59d95e3d",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"events": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"auth": {
+				"type": "basic",
+				"basic": [
+					{
+						"key": "username",
+						"value": "{{api_user}}",
+						"type": "string"
+					},
+					{
+						"key": "password",
+						"value": "{{api_password}}",
+						"type": "string"
+					},
+					{
+						"key": "saveHelperData",
+						"value": true,
+						"type": "boolean"
+					},
+					{
+						"key": "showPassword",
+						"value": false,
+						"type": "boolean"
+					}
+				]
+			},
+			"time": 1514373948947,
+			"name": "Get Nonce",
+			"description": "",
+			"collectionId": "fd048019-67ae-44a5-93b2-046d87e77a46",
+			"responses": [],
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{api_user}}",
+				"password": "{{api_password}}",
+				"saveToRequest": true
+			},
+			"rawModeData": ""
+		},
+		{
+			"id": "30ed335a-fbbd-861b-f082-c6b48b83b6c6",
+			"headers": "Authorization: Basic YWNtZTphY21lc2VjcmV0\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Basic YWNtZTphY21lc2VjcmV0",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{vc_route}}/send-tx?signedTx=0xf86d02850ba43b740083015f9094c931d31b1207baaeb730c5bdbc1be10f59d95e3d8609184e72a00080820fc6a0d39c5bdbf34d00cd901ee43c99cd1135d316df6e195bd3bb7dfa7aa777d63915a065baf5b6210a4b1a0f8af41c20f581a80b976bb64d36af9298cd8858674d1d69",
+			"queryParams": [
+				{
+					"key": "signedTx",
+					"value": "0xf86d02850ba43b740083015f9094c931d31b1207baaeb730c5bdbc1be10f59d95e3d8609184e72a00080820fc6a0d39c5bdbf34d00cd901ee43c99cd1135d316df6e195bd3bb7dfa7aa777d63915a065baf5b6210a4b1a0f8af41c20f581a80b976bb64d36af9298cd8858674d1d69",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"events": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"auth": {
+				"type": "basic",
+				"basic": [
+					{
+						"key": "username",
+						"value": "{{api_user}}",
+						"type": "string"
+					},
+					{
+						"key": "password",
+						"value": "{{api_password}}",
+						"type": "string"
+					},
+					{
+						"key": "saveHelperData",
+						"value": true,
+						"type": "boolean"
+					},
+					{
+						"key": "showPassword",
+						"value": false,
+						"type": "boolean"
+					}
+				]
+			},
+			"time": 1514373953099,
+			"name": "Send Signed Tx",
+			"description": "",
+			"collectionId": "fd048019-67ae-44a5-93b2-046d87e77a46",
+			"responses": [],
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{api_user}}",
+				"password": "{{api_password}}",
+				"saveToRequest": true
+			},
+			"rawModeData": ""
+		},
+		{
+			"id": "45572cc5-43b1-fccb-a7d3-24fcc1f96521",
+			"headers": "Authorization: Basic YWNtZTphY21lc2VjcmV0\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Basic YWNtZTphY21lc2VjcmV0",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{vc_route}}/get-st-balance?address=0xc931d31b1207baaeb730c5bdbc1be10f59d95e3d",
+			"queryParams": [
+				{
+					"key": "address",
+					"value": "0xc931d31b1207baaeb730c5bdbc1be10f59d95e3d",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"events": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"auth": {
+				"type": "basic",
+				"basic": [
+					{
+						"key": "username",
+						"value": "{{api_user}}",
+						"type": "string"
+					},
+					{
+						"key": "password",
+						"value": "{{api_password}}",
+						"type": "string"
+					},
+					{
+						"key": "saveHelperData",
+						"value": true,
+						"type": "boolean"
+					},
+					{
+						"key": "showPassword",
+						"value": false,
+						"type": "boolean"
+					}
+				]
+			},
+			"time": 1514537350625,
+			"name": "Get Balance",
+			"description": "",
+			"collectionId": "fd048019-67ae-44a5-93b2-046d87e77a46",
+			"responses": [],
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{api_user}}",
+				"password": "{{api_password}}",
+				"saveToRequest": true
+			},
+			"rawModeData": ""
+		},
+		{
+			"id": "907ebfa3-b385-9c2f-1cce-74c514374230",
+			"headers": "Authorization: Basic YWNtZTphY21lc2VjcmV0\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Basic YWNtZTphY21lc2VjcmV0",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{vc_route}}//request-funds?amount=0.1&address=0xc931d31b1207baaeb730c5bdbc1be10f59d95e3d",
+			"queryParams": [
+				{
+					"key": "amount",
+					"value": "0.1",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "address",
+					"value": "0xc931d31b1207baaeb730c5bdbc1be10f59d95e3d",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"events": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"auth": {
+				"type": "basic",
+				"basic": [
+					{
+						"key": "username",
+						"value": "{{api_user}}",
+						"type": "string"
+					},
+					{
+						"key": "password",
+						"value": "{{api_password}}",
+						"type": "string"
+					},
+					{
+						"key": "saveHelperData",
+						"value": true,
+						"type": "boolean"
+					},
+					{
+						"key": "showPassword",
+						"value": false,
+						"type": "boolean"
+					}
+				]
+			},
+			"time": 1514307162187,
+			"name": "Request Funds",
+			"description": "",
+			"collectionId": "fd048019-67ae-44a5-93b2-046d87e77a46",
+			"responses": [],
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{api_user}}",
+				"password": "{{api_password}}",
+				"saveToRequest": true
+			},
+			"rawModeData": ""
+		}
+	]
+}

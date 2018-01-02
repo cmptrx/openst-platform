@@ -1,0 +1,223 @@
+{
+	"id": "6a427230-5434-1a83-a27c-1093d02799f5",
+	"name": "utilityChainInteract",
+	"description": "",
+	"order": [
+		"1ef6c1fc-ac06-beda-7005-4059d231544c",
+		"1c4705cf-a2bb-7ea6-7d0b-9d74ce22b68b",
+		"e23e84aa-55bb-7a5a-7552-a70e524d92d4"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 1514297434151,
+	"owner": 0,
+	"public": false,
+	"events": [],
+	"variables": [],
+	"auth": null,
+	"requests": [
+		{
+			"id": "1c4705cf-a2bb-7ea6-7d0b-9d74ce22b68b",
+			"headers": "Authorization: Basic YWNtZTphY21lc2VjcmV0\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Basic YWNtZTphY21lc2VjcmV0",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{uc_route}}/get-transaction-receipt?transactionHash=0x7c9ee86d974758111fdb76a1d6d0b77285419ec56fac72a8746f8b0d3c0ae2df",
+			"queryParams": [
+				{
+					"key": "transactionHash",
+					"value": "0x7c9ee86d974758111fdb76a1d6d0b77285419ec56fac72a8746f8b0d3c0ae2df",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"events": [],
+			"auth": {
+				"type": "basic",
+				"basic": [
+					{
+						"key": "username",
+						"value": "{{api_user}}",
+						"type": "string"
+					},
+					{
+						"key": "password",
+						"value": "{{api_password}}",
+						"type": "string"
+					},
+					{
+						"key": "saveHelperData",
+						"value": true,
+						"type": "boolean"
+					},
+					{
+						"key": "showPassword",
+						"value": false,
+						"type": "boolean"
+					}
+				]
+			},
+			"method": "GET",
+			"collectionId": "6a427230-5434-1a83-a27c-1093d02799f5",
+			"data": [],
+			"dataMode": "raw",
+			"name": "Get Transaction Receipt",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1514298912566,
+			"version": 2,
+			"responses": [],
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{api_user}}",
+				"password": "{{api_password}}",
+				"saveToRequest": true
+			},
+			"rawModeData": ""
+		},
+		{
+			"id": "1ef6c1fc-ac06-beda-7005-4059d231544c",
+			"headers": "Authorization: Basic YWNtZTphY21lc2VjcmV0\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Basic YWNtZTphY21lc2VjcmV0",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{uc_route}}/get-nonce?address=0x04e97481102cb5137b962e9ae6318a4e7415bf0f",
+			"queryParams": [
+				{
+					"key": "address",
+					"value": "0x04e97481102cb5137b962e9ae6318a4e7415bf0f",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"events": [],
+			"auth": {
+				"type": "basic",
+				"basic": [
+					{
+						"key": "username",
+						"value": "{{api_user}}",
+						"type": "string"
+					},
+					{
+						"key": "password",
+						"value": "{{api_password}}",
+						"type": "string"
+					},
+					{
+						"key": "saveHelperData",
+						"value": true,
+						"type": "boolean"
+					},
+					{
+						"key": "showPassword",
+						"value": false,
+						"type": "boolean"
+					}
+				]
+			},
+			"method": "GET",
+			"collectionId": "6a427230-5434-1a83-a27c-1093d02799f5",
+			"data": [],
+			"dataMode": "raw",
+			"name": "Get Nonce",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1514298176874,
+			"version": 2,
+			"responses": [],
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{api_user}}",
+				"password": "{{api_password}}",
+				"saveToRequest": true
+			},
+			"rawModeData": ""
+		},
+		{
+			"id": "e23e84aa-55bb-7a5a-7552-a70e524d92d4",
+			"headers": "Authorization: Basic YWNtZTphY21lc2VjcmV0\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Basic YWNtZTphY21lc2VjcmV0",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{uc_route}}/get-balance?address=0xc214d4410ae1e3a7898be45b10ab43e30465f1ed",
+			"queryParams": [
+				{
+					"key": "address",
+					"value": "0xc214d4410ae1e3a7898be45b10ab43e30465f1ed",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"events": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"auth": {
+				"type": "basic",
+				"basic": [
+					{
+						"key": "username",
+						"value": "{{api_user}}",
+						"type": "string"
+					},
+					{
+						"key": "password",
+						"value": "{{api_password}}",
+						"type": "string"
+					},
+					{
+						"key": "saveHelperData",
+						"value": true,
+						"type": "boolean"
+					},
+					{
+						"key": "showPassword",
+						"value": false,
+						"type": "boolean"
+					}
+				]
+			},
+			"time": 1514344910932,
+			"name": "Get Balance",
+			"description": "",
+			"collectionId": "6a427230-5434-1a83-a27c-1093d02799f5",
+			"responses": [],
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{api_user}}",
+				"password": "{{api_password}}",
+				"saveToRequest": true
+			},
+			"rawModeData": ""
+		}
+	]
+}
