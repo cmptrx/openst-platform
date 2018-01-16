@@ -75,6 +75,9 @@ if (!path.isAbsolute(txLogsFolder)) {
 }
 define('OST_TRANSACTION_LOGS_FOLDER', txLogsFolder);
 
+// ALLOWED VALUES => NONE/REDIS/MEMCACHED
+define('CACHING_ENGINE', process.env.CACHING_ENGINE);
+
 var chainInteractHttpAuthCredentials = {
   'users': {}
 };
